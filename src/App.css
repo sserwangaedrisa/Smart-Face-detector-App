@@ -1,6 +1,17 @@
 .App {
   text-align: center;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  border-bottom: 1px solid rgb(178, 133, 220);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
 
 .App-logo {
   height: 40vmin;

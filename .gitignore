@@ -2,12 +2,15 @@
 
 # dependencies
 /node_modules
+/public
 /.pnp
 .pnp.js
 
 # testing
 /coverage
-
+package-lock.json
+reportWebVitals.js
+setupTests.js
 # production
 /build
 
@@ -21,3 +24,4 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+

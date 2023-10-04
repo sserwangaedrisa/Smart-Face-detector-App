@@ -1,4 +1,5 @@
 import React from 'react';
+import './SignIn.css';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -15,35 +16,24 @@ class SignIn extends React.Component {
   onChangePassword = (event) => {
     this.setState({ signInPassword: event.target.value });
   };
-
   changePageStateOnSubmit = (event) => {
     event.preventDefault();
-    fetch('http://localhost:3000/signin', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: this.state.signInEmail,
-        password: this.state.signInPassword,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.id) {
-          this.props.pageStateChanger('home');
-          this.props.changeUserState(data);
-        } else {
-          alert('SignIn failed');
-        }
-      });
+    if (this.state.signInEmail.length && this.state.signInPassword.length) {
+      this.props.pageStateChanger('home');
+      this.props.changeUserState({ name: '' });
+    } else {
+      alert('SignIn failed');
+    }
   };
+
   render() {
     const { pageStateChanger } = this.props;
     return (
       <article className='br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center shadow-hover'>
-        <main className='pa4 black-80'>
+        <main className='main pa4 black-80'>
           <form className='measure'>
             <fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
-              <legend className='f2 fw6 ph0 mh0'>Sign-In form</legend>
+              <legend className='main f2 fw6 ph0 mh0'>Sign-In form</legend>
               <div className='mt3'>
                 <label className='db fw6 lh-copy f6' htmlFor='email-address'>
                   Email

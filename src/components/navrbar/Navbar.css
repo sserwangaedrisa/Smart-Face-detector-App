@@ -1,0 +1,14 @@
+@media (max-width: 400px) {
+  .Nav-item {
+    margin-top: 0px;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .Nav-item p {
+    font-size: 7vmin;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: 0px;
+  }
+}

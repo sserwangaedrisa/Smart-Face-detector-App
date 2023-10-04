@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /public
+server-conectors.js
 /.pnp
 .pnp.js
 

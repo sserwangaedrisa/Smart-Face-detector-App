@@ -1,4 +1,3 @@
-// const IMAGE_URL = "https://samples.clarifai.com/metro-north.jpg";
 import './App.css';
 
 import Navbar from './components/navrbar/Navbar';
@@ -14,8 +13,8 @@ const initialState = {
   input: '',
   imageUrl: '',
   box: {},
+  pageState: 'signin',
   signInState: 'no',
-  pageState: 'signIn',
   user: {
     id: '',
     name: '',
@@ -26,10 +25,6 @@ class App extends Component {
   constructor() {
     super();
     this.state = initialState;
-  }
-
-  componentDidMount() {
-    fetch('http://localhost:3000').then((response) => response.json());
   }
 
   changeUserState = (data) => {
@@ -63,62 +58,37 @@ class App extends Component {
   buttonFunction = () => {
     const imageUrl = this.state.input;
     this.setState({ imageUrl: this.state.input });
-    fetch('http://localhost:3000/api', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        input: imageUrl,
-      }),
-    })
-      .then((response) => response.json()) // Parse the response as JSON
-      .then((response) => {
-        if (response) {
-          fetch('http://localhost:3000/image', {
-            method: 'put',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              id: this.state.user.id,
-            }),
-          })
-            .then((response) => response.json())
-            .then((count) => {
-              this.setState(Object.assign(this.state.user, { entries: count }));
-            });
-          this.faceBoxArea(this.calcutelateBoxLocation(response));
-        }
-      })
-      .catch((err) => console.error(err));
-  };
-  buttonFunction = () => {
-    const imageUrl = this.state.input;
-    this.setState({ imageUrl: this.state.input });
-    fetch('http://localhost:3000/api', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        input: imageUrl,
-      }),
-    })
-      .then((response) => response.json()) // Parse the response as JSON
-      .then((response) => {
-        if (response) {
-          fetch('http://localhost:3000/image', {
-            method: 'put',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              id: this.state.user.id,
-            }),
-          })
-            .then((response) => response.json())
-            .then((count) => {
-              this.setState(Object.assign(this.state.user, { entries: count }));
-            });
-          this.faceBoxArea(this.calcutelateBoxLocation(response));
-        }
-      })
-      .catch((err) => console.error(err));
-  };
+    const raw = JSON.stringify({
+      inputs: [
+        {
+          data: {
+            image: {
+              url: imageUrl,
+            },
+          },
+        },
+      ],
+    });
 
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer 7dd352e7546e4369812f85f7503a5b26',
+      },
+      body: raw,
+    };
+
+    fetch(
+      `https://api.clarifai.com/v2/models/face-detection/versions/6dc7e46bc9124c5c8824be4822abe105/outputs`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        this.faceBoxArea(this.calcutelateBoxLocation(response));
+      })
+      .catch((err) => console.error(err));
+  };
   pageStateChanger = (state) => {
     if (state === 'home') {
       this.setState({ signInState: 'yes' });
@@ -133,11 +103,12 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <div className='grid-container'>
+        <div className='grid-container shadow-3'>
           <Logo />
           <Navbar
             pageStateChanger={this.pageStateChanger}
             signInState={this.signInState}
+            page={this.state.pageState}
           />
         </div>
         {this.state.pageState === 'home' ? (

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../SignIn/SignIn.css';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -24,22 +25,13 @@ class SignUp extends React.Component {
 
   changePageStateOnSubmit = (event) => {
     event.preventDefault();
-    fetch('http://localhost:3000/signup', {
-      method: 'post',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: this.state.signUpEmail,
-        password: this.state.signUpPassword,
-        name: this.state.signUpName,
-      }),
-    })
-      .then((response) => response.json())
-      .then((user) => {
-        if (user.id) {
-          this.props.changeUserState(user);
-          this.props.pageStateChanger('home');
-        }
-      });
+    this.props.changeUserState({ name: this.state.signUpName });
+    if (
+      this.state.signUpEmail.length > 0 &&
+      this.state.signUpPassword.length > 0
+    ) {
+      this.props.pageStateChanger('home');
+    }
   };
 
   render() {
@@ -48,7 +40,7 @@ class SignUp extends React.Component {
         <main className='pa4 black-80'>
           <form className='measure'>
             <fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
-              <legend className='f2 fw6 ph0 mh0'>Registration form</legend>
+              <legend className='main f2 fw6 ph0 mh0'>Registration form</legend>
               <div className='mt3'>
                 <label className='db fw6 lh-copy f6' htmlFor='email-address'>
                   Your Name

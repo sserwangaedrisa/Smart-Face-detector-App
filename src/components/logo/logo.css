@@ -1,3 +1,36 @@
-.ma3{
-    background: no-repeat linear-gradient(to left,#9337be, #895d52);
+.ma3 {
+  background: no-repeat linear-gradient(to left, #9337be, #895d52);
+}
+
+.logo {
+  margin-bottom: 2px;
+  height: 100px;
+  width: 100px;
+  background: no-repeat linear-gradient(to bottom, #9337be, #895d52);
+}
+.image {
+  width: 100px;
+  height: 100px;
+}
+.tilt {
+  width: 100px;
+  height: 100px;
+}
+@media (max-width: 350px) {
+  .logo {
+    margin: 4px;
+    margin-bottom: 3px;
+    width: 70px; /* Adjust the width for smaller screens */
+    height: 70px; /* Adjust the height for smaller screens */
+  }
+  .image {
+    width: 70px;
+  }
+  .tilt {
+    width: 70px;
+  }
+
+  .logo img {
+    width: 65px; /* Adjust the width of the image for smaller screens */
+  }
 }

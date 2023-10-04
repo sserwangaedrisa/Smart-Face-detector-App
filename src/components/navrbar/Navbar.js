@@ -1,42 +1,47 @@
-import React from "react";
-
-const Navbar = ({ pageStateChanger, signInState }) => {
-  if (signInState === "yes") {
+import React from 'react';
+import './Navbar.css';
+const Navbar = ({ page, pageStateChanger }) => {
+  if (page === 'home') {
     return (
-      <div>
+      <div
+        className='Nav-item'
+        style={{ display: 'flex', justifyContent: 'flex-end' }}
+      >
         <p
           onClick={() => {
-            pageStateChanger("signIn");
+            pageStateChanger('signIn');
           }}
-          className="pa3 li pointer dim f3 underline grow"
+          className='sign sign-out pa3 li pointer dim f3 underline grow'
         >
-          sign-out
+          SignOut
         </p>
       </div>
     );
   } else {
     return (
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <div
+        className='Nav-item'
+        style={{ display: 'flex', justifyContent: 'flex-end' }}
+      >
         <p
           onClick={() => {
-            pageStateChanger("signIn");
+            pageStateChanger('signIn');
           }}
-          className="pa3 li pointer dim f3 underline grow"
+          className='sign sign-in pa3 li pointer dim f3 underline grow'
         >
-          sign-In
+          SignIn
         </p>
         <p
           onClick={() => {
-            pageStateChanger("signUp");
+            pageStateChanger('signUp');
           }}
-          className="pa3 li pointer dim f3 underline grow"
+          className='sign sign-up pa3 li pointer dim f3 underline grow'
         >
-          sign-up
+          SignUp
         </p>
       </div>
     );
   }
-
-  // </nav>
 };
+
 export default Navbar;

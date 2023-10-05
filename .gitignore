@@ -4,12 +4,13 @@
 /node_modules
 /public
 server-conectors.js
+
 /.pnp
 .pnp.js
 
 # testing
 /coverage
-package-lock.json
+
 reportWebVitals.js
 setupTests.js
 # production

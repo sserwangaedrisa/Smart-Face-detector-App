@@ -2,6 +2,7 @@
 
 This web application allows users to detect human faces in pictures provided via image URLs. Users can upload a picture from the internet by pasting the image URL into the provided prompt. The application utilizes the Clarifai API for face detection.
 https://sserwangaedrisa.github.io/Smart-Face-detector-App/
+https://smart-face-detector-app-4vzc.vercel.app/
 
 ## Table of Contents
 
@@ -10,7 +11,7 @@ https://sserwangaedrisa.github.io/Smart-Face-detector-App/
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
 - [License](#license)
-- Deployed project link https://sserwangaedrisa.github.io/Smart-Face-detector-App/
+- Deployed project link https://sserwangaedrisa.github.io/Smart-Face-detector-App/ or https://smart-face-detector-app-4vzc.vercel.app/
 
 ## Features
 

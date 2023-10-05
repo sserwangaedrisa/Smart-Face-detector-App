@@ -1,5 +1,5 @@
 import './App.css';
-
+import React from 'react';
 import Navbar from './components/navrbar/Navbar';
 import Logo from './components/logo/Logo';
 import Rank from './components/Rank/Rank';

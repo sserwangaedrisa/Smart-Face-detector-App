@@ -10,7 +10,7 @@ https://smart-face-detector-app-4vzc.vercel.app/
 - [Getting Started](#getting-started)
 - [Contributing](#contributing)
 - [License](#license)
-- Deployed project link https://sserwangaedrisa.github.io/Smart-Face-detector-App/ or https://smart-face-detector-app-4vzc.vercel.app/
+- Deployed project link:  https://smart-face-detector-app-4vzc.vercel.app/
 
 ## Features
 

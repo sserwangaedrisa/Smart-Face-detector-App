@@ -35,7 +35,6 @@ To run this project locally and contribute, follow these steps:
 3. Configure the Clarifai API credentials in the server.
 4. Set up the PostgreSQL database and configure the connection in the server.
 5. Start the server using `npm start` in the server directory.
-6. Start the client using `npm start` in the client directory.
 
 ## Contributing
 
